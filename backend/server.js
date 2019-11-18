@@ -6,11 +6,15 @@ const app = express();
 // Connect DB
 connectDB();
 
+// It allows to accept data making post request
+app.use(express.json({ extended: false }));
+
 app.get("/", (req, res) => res.json({ msg: "Hello from node and express" }));
 
 // Routes definition
 app.use("/api/characters", require("./routes/characters"));
 app.use("/api/characters/:id", require("./routes/characters"));
+app.use("/api/books", require("./routes/books"));
 
 const PORT = process.env.PORT || 5000;
 

@@ -5,14 +5,16 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "server": "nodemon server.js"
+    "server": "nodemon server.js",
+    "populate": "node loadData.js"
   },
   "author": "Cesar Cachay",
   "license": "ISC",
   "dependencies": {
     "config": "^3.2.4",
     "express": "^4.17.1",
-    "mongoose": "^5.7.11"
+    "mongoose": "^5.7.11",
+    "node-fetch": "^2.6.0"
   },
   "devDependencies": {
     "nodemon": "^1.19.4"
