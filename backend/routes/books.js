@@ -4,12 +4,6 @@ const router = express.Router();
 const Book = require("../models/Book");
 
 router.get("/", async (req, res) => {
-  // const myBooks = await Book.find(function(err, books) {
-  //   if (err) return console.error(err);
-  //   console.log(books);
-  // });
-
-  // res.json(myBooks);
   try {
     const myBooks = await Book.find({});
     res.json(myBooks);

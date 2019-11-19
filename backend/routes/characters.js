@@ -8,7 +8,9 @@ const Character = require("../models/Character");
 // @access    Public route
 router.get("/", (req, res) => {
   try {
-    res.send("Get all characters from API");
+    const myChars = await Character.find({});
+
+    res.json(myChars);
   } catch (error) {
     console.error(error.message);
     res.status(500).send("Server Error");
@@ -20,7 +22,13 @@ router.get("/", (req, res) => {
 // @access    Public route
 router.get("/:id", (req, res) => {
   try {
-    res.send("Get an specific character");
+    const specificChar = await Character.findById(req.params.id);
+
+    if (!specificChar) {
+      return res.status(404).json({ msg: "Contact not found" });
+    }
+
+    res.json(specificChar);
   } catch (error) {
     console.error(error.message);
     res.status(500).send("Server Error");
