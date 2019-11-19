@@ -6,7 +6,7 @@ const Character = require("../models/Character");
 // @route     GET api/characters
 // desc       Get all characters
 // @access    Public route
-router.get("/", (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const myChars = await Character.find({});
 
@@ -20,7 +20,7 @@ router.get("/", (req, res) => {
 // @route     GET api/characters/:id
 // desc       Get an specific characters findById
 // @access    Public route
-router.get("/:id", (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
     const specificChar = await Character.findById(req.params.id);
 
