@@ -8,23 +8,23 @@ connectDB();
 (async function() {
   try {
     const characters = await loadData.loadCharacters();
-    characters.forEach(character => {
-      const { name, image, gender, house } = character;
+    await Promise.all(
+      characters.map(async character => {
+        const { name, image, gender, house } = character;
 
-      let newCharacter = new Character({
-        name,
-        image,
-        gender,
-        house
-      });
+        let newCharacter = new Character({
+          name,
+          image,
+          gender,
+          house
+        });
 
-      newCharacter.save();
+        await newCharacter.save();
+      })
+    );
 
-      setTimeout(() => {
-        console.log("Database populated successfully");
-        process.exit();
-      }, 5000);
-    });
+    console.log("Database populated successfully");
+    process.exit();
   } catch (error) {
     console.error(error.message);
     console.log("Server Error");
