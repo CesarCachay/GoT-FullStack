@@ -11,7 +11,7 @@ const Home = () => {
 
   const handleFetchAll = async () => {
     const response = await getAllCharacters(limit, offset);
-    // console.log(response.data);
+    console.log(response.data);
     setCharacters(response.data);
   };
 

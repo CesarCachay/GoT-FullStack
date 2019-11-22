@@ -14,7 +14,7 @@ export const getAllCharacters = async (limit = 10, offset = 0) => {
   // return response;
 
   return await axios.get(
-    `${CHARS_API_URL}/characters?limit=${limit}&offset=${offset}`
+    `${CHARS_API_URL}/characters?limit=${limit}&offset=${offset}&page=${5}`
   );
 };
 
